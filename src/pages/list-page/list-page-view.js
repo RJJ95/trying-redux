@@ -16,8 +16,18 @@ const ListPage = (props) => {
         <div key={index} className={styles.itemRow}>
           <div className={styles.itemTitle}>{item.title}</div>
           <div>
-            <button className={styles.checkItem}>Mark as done</button>
-            <button className={styles.removeItem}>Remove item</button>
+            <button
+              onClick={() => props.checkItem(item.id)}
+              className={styles.checkItem}
+            >
+              Mark as done
+            </button>
+            <button
+              onClick={() => props.removeItem(item.id)}
+              className={styles.removeItem}
+            >
+              Remove item
+            </button>
           </div>
         </div>
       ))}
@@ -49,6 +59,8 @@ const mapDispatchToProps = (dispatch) => {
     setToDoTitle: (e) =>
       dispatch({ type: "SET_TODO_TITLE", title: e.target.value }),
     resetToDoTitle: () => dispatch({ type: "RESET_TODO_TITLE" }),
+    removeItem: (itemId) => dispatch({ type: "REMOVE_ITEM", itemId: itemId }),
+    checkItem: (itemId) => dispatch({ type: "CHECK_ITEM", itemId: itemId }),
   };
 };
 
