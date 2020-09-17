@@ -1,22 +1,8 @@
 import React from "react";
 import styles from "./list-page.module.css";
+import { connect } from "react-redux";
 
-const list = [
-  {
-    title: "Hello darkness, my old friend",
-    executed: false,
-  },
-  {
-    title: "I've come to talk to you again",
-    executed: true,
-  },
-  {
-    title: "Because a vision softly creeping",
-    executed: false,
-  },
-];
-
-const ListPage = () => {
+const ListPage = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -24,7 +10,7 @@ const ListPage = () => {
   return (
     <div className={styles.wrapper}>
       <h1>Your to do list :)</h1>
-      {list.map((item) => (
+      {props.list.map((item) => (
         <div className={styles.itemRow}>
           <div className={styles.itemTitle}>{item.title}</div>
           <div>
@@ -46,4 +32,10 @@ const ListPage = () => {
   );
 };
 
-export default ListPage;
+const mapStateToProps = (state) => {
+  return {
+    list: state.list,
+  };
+};
+
+export default connect(mapStateToProps)(ListPage);
