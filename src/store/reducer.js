@@ -16,6 +16,18 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "ADD_LIST_ITEM":
+      return {
+        ...state,
+        list: [
+          {
+            title: action.title,
+            executed: false,
+          },
+        ],
+      };
+  }
   return state;
 };
 

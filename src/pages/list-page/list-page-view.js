@@ -3,8 +3,9 @@ import styles from "./list-page.module.css";
 import { connect } from "react-redux";
 
 const ListPage = (props) => {
-  function handleSubmit(e) {
+  function handleFormSubmit(e) {
     e.preventDefault();
+    props.addListItem()
   }
 
   return (
@@ -19,7 +20,7 @@ const ListPage = (props) => {
           </div>
         </div>
       ))}
-      <form className={styles.addItemForm} onSubmit={handleSubmit}>
+      <form className={styles.addItemForm} onSubmit={() => handleFormSubmit()}>
         <input
           className={styles.addItemInput}
           type="text"
@@ -38,4 +39,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ListPage);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addListItem: () => dispatch({ type: "ADD_LIST_ITEM" }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListPage);
