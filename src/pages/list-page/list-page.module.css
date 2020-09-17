@@ -7,12 +7,6 @@
   justify-content: center;
 }
 
-.header {
-}
-
-.listBody {
-}
-
 .itemRow {
   display: flex;
   flex-direction: row;
@@ -28,12 +22,28 @@
   font-weight: bold;
 }
 
-.buttonGroup {
+.toDoListButton {
+    color: white;
+    border: none;
+    padding: 5px 10px;
 }
 
 .checkItem {
+  background-color: green;
+  composes: toDoListButton;
 }
 
 .removeItem {
+  background-color: red;
   margin-left: 10px;
+  composes: toDoListButton;
+}
+
+.addItemForm {
+  margin-top: 40px;
+}
+
+.addItemInput {
+  width: 400px;
+  margin-right: 20px;
 }

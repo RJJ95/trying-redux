@@ -17,22 +17,31 @@ const list = [
 ];
 
 const ListPage = () => {
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <h1>Your to do list :)</h1>
-      </div>
-      <div className={styles.listBody}>
-        {list.map((item) => (
-          <div className={styles.itemRow}>
-            <div className={styles.itemTitle}>{item.title}</div>
-            <div className={styles.buttonGroup}>
-              <button className={styles.checkItem}>Mark as done</button>
-              <button className={styles.removeItem}>Remove this item</button>
-            </div>
+      <h1>Your to do list :)</h1>
+      {list.map((item) => (
+        <div className={styles.itemRow}>
+          <div className={styles.itemTitle}>{item.title}</div>
+          <div>
+            <button className={styles.checkItem}>Mark as done</button>
+            <button className={styles.removeItem}>Remove this item</button>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+      <form className={styles.addItemForm} onSubmit={handleSubmit}>
+        <input
+          className={styles.addItemInput}
+          type="text"
+          placeholder="What do you need to do?"
+          required
+        />
+        <button type="submit">Add item</button>
+      </form>
     </div>
   );
 };
