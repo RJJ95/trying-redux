@@ -20,15 +20,24 @@ const reducer = (state = initialState, action) => {
     case "ADD_LIST_ITEM":
       return {
         ...state,
-        list: [
-          {
-            title: action.title,
-            executed: false,
-          },
-        ],
+        list: state.list.concat({
+          title: state.toDoTitle,
+          executed: false,
+        }),
       };
+    case "SET_TODO_TITLE":
+      return {
+        ...state,
+        toDoTitle: action.title,
+      };
+    case "RESET_TODO_TITLE":
+      return {
+        ...state,
+        toDoTitle: "",
+      };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default reducer;
