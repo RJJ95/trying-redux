@@ -8,7 +8,7 @@ const initialState = {
     {
       id: new Date(),
       title: "I've come to talk to you again",
-      executed: true,
+      executed: false,
     },
     {
       id: new Date(),
@@ -43,6 +43,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         list: state.list.filter((item) => item.id !== action.itemId),
+      };
+    case "CHECK_ITEM":
+      return {
+        ...state,
+        list: state.list.map((item) => {
+          if (item.id !== action.itemId) {
+            return item;
+          }
+          return {
+            ...item,
+            executed: true,
+          };
+        }),
       };
     default:
       return state;

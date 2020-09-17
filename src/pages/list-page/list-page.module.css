@@ -23,9 +23,9 @@
 }
 
 .toDoListButton {
-    color: white;
-    border: none;
-    padding: 5px 10px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
 }
 
 .checkItem {
@@ -46,4 +46,8 @@
 .addItemInput {
   width: 400px;
   margin-right: 20px;
+}
+
+.greenBackground {
+  background-color: #90ee90;
 }

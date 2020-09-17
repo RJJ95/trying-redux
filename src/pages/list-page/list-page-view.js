@@ -13,7 +13,12 @@ const ListPage = (props) => {
     <div className={styles.wrapper}>
       <h1>Your to do list :)</h1>
       {props.list.map((item, index) => (
-        <div key={index} className={styles.itemRow}>
+        <div
+          key={index}
+          className={`${styles.itemRow} ${
+            item.executed && styles.greenBackground
+          }`}
+        >
           <div className={styles.itemTitle}>{item.title}</div>
           <div>
             <button
